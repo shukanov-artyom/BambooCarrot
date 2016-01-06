@@ -1,0 +1,48 @@
+﻿<Window 
+    x:Class="Carrot.Parts.View.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="CI Build State" 
+    ResizeMode="NoResize"
+    IsManipulationEnabled="False"
+    Height="300" 
+    Width="400"
+    Closing="MainWindow_OnClosing">
+    <Grid 
+        x:Name="gridMain"
+        Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock
+            Grid.Row="0"
+            FontSize="18"
+            Foreground="White"
+            Text="Build is broken"
+            HorizontalAlignment="Center"/>
+        <StackPanel
+            HorizontalAlignment="Center"
+            Grid.Row="1"
+            Orientation="Horizontal">
+            <Image 
+                Name="imageShockedCat"
+                Visibility="Visible" 
+                Source="/Carrot.Parts;component/cat.jpg" />
+            <Image
+                Name="imageOk"
+                Visibility="Collapsed"
+                Source="/Carrot.Parts;component/freedom.jpg" />
+        </StackPanel>
+        <StackPanel
+            HorizontalAlignment="Center"
+            Grid.Row="2"
+            Orientation="Horizontal">
+            <TextBlock 
+                FontSize="18"
+                Foreground="White"
+                x:Name="textBlockFailedPlan" />
+        </StackPanel>
+    </Grid>
+</Window>

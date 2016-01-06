@@ -1,0 +1,20 @@
+<!-- Run with Visual Studio 2015 MsBuild command prompt -->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+  </PropertyGroup>
+  <Target Name="Build">
+  <ItemGroup>
+    <Parts Include="Carrot.Parts\bin\*.dll" />
+  </ItemGroup>
+  <MSBuild 
+        Projects="Carrot.sln" 
+        Properties="Configuration=Release" 
+        Targets="Rebuild"/>
+        <Copy
+            SourceFiles="@(Parts)"
+            DestinationFolder="\\fs\Project-TransVault$\Internal\Data\BuildStatusTrayDemon\Update"/>
+        <Copy
+            SourceFiles="Carrot.Install\Bamboo Carrot Build Monitor.msi"
+            DestinationFolder="\\fs\Project-TransVault$\Internal\Data\BuildStatusTrayDemon\"/>
+  </Target>
+</Project>
