@@ -1,0 +1,14 @@
+Carrot/bin/
+Carrot/obj/
+Carrot.Parts/obj/
+packages/
+Carrot.Install/bin/
+Carrot.Deployment/obj/
+Carrot.Parts/bin/
+Carrot.Install/obj/
+Carrot.Contracts/obj/
+Carrot.ComposedApplication/obj/
+Carrot.ComposedApplication/bin/
+.vs/Carrot/v14/.suo
+Carrot.Contracts/bin/
+Carrot.Deployment/bin/
