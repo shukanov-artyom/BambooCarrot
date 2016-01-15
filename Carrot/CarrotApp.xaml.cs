@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Windows;
 using Carrot.ComposedApplication;
+using Carrot.Configuration;
 using Carrot.Contracts;
 using Application = System.Windows.Application;
 
@@ -13,24 +16,50 @@ namespace Carrot
     {
         private IComposedApplication composedApp;
 
-        private void App_OnStartup(object sender, StartupEventArgs e)
+        protected override void OnStartup(StartupEventArgs e)
         {
+            //e.Args is the string[] of command line argruments
             composedApp = ApplicationCompositionHelper.GetInstance();
             InitializeComposedApplication(composedApp);
+            if (e.Args.Length != 0)
+            {
+                UpdateConfiguration(new CarrotCommandLine(e.Args));
+                Shutdown();
+            }
         }
 
         private void App_OnExit(object sender, ExitEventArgs e)
         {
-            IDisposable app = composedApp as IDisposable;
-            if (app != null)
-            {
-                app.Dispose();
-            }
+            (composedApp as IDisposable)?.Dispose();
         }
 
         private void InitializeComposedApplication(IComposedApplication app)
         {
             app.Interaction.Setup(app.Exports);
+        }
+
+        private void UpdateConfiguration(CarrotCommandLine parameters)
+        {
+            foreach (KeyValuePair<string, string> pair in CmdLineToConfigKeyMapping.Mapping)
+            {
+                string cmdParam = pair.Key;
+                string configKey = pair.Value;
+                if (!parameters.ContainsKey(cmdParam))
+                {
+                    throw new ArgumentException(
+                        String.Format("Argument {0} not provided, cannot complete configuration.",
+                        cmdParam));
+                }
+                UpdateConfigurationKey(configKey, parameters[cmdParam]);
+            }
+        }
+
+        private void UpdateConfigurationKey(string key, string newValue)
+        {
+            System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(
+                System.Windows.Forms.Application.ExecutablePath);
+            config.AppSettings.Settings[key].Value = newValue;
+            config.Save(ConfigurationSaveMode.Modified);
         }
     }
 }

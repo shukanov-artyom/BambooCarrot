@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -15,8 +16,7 @@ namespace Carrot.Parts
     [Export(typeof(IExport))]
     public class CurrentCiStatus : MarshalByRefObject, ICiStatus
     {
-        private static readonly string BunnyUrl =
-            "http://cifarm.itransition.corp/rest/build-bunny/1.0/summary/7e1004f2-3b94-4c06-b744-09c3ea3ffe5b.json?os_authType=basic";
+        private static readonly string BunnyUrl;
         private static readonly string User = "planstatechecker.transvault";
         private static readonly string Password = "pB50GjhcouD";
         private static readonly IDictionary<string, CiWarningLevel> LevelMap = 
@@ -26,6 +26,11 @@ namespace Carrot.Parts
                 {"WARN", CiWarningLevel.Warn},
                 {"FAIL", CiWarningLevel.Error},
             };
+
+        static CurrentCiStatus()
+        {
+            BunnyUrl = GetBunnyUrlFromConfig();
+        }
 
         /// <summary>
         /// Warning level raised by CI.
@@ -95,6 +100,11 @@ namespace Carrot.Parts
             string encoded = Convert.ToBase64String(
                 Encoding.Default.GetBytes(String.Format("{0}:{1}", User, Password)));
             return String.Format("Basic {0}", encoded);
+        }
+
+        private static string GetBunnyUrlFromConfig()
+        {
+            return ConfigurationManager.AppSettings["BambooBuildBunnyUrl"];
         }
     }
 }

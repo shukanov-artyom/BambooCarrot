@@ -43,6 +43,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -100,6 +101,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Carrot.CommandLine\Carrot.Configuration.csproj">
+      <Project>{5C2975A0-4EA1-473D-8DE9-01BFCA036301}</Project>
+      <Name>Carrot.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Carrot.ComposedApplication\Carrot.ComposedApplication.csproj">
       <Project>{7B75B0D5-DDD2-422B-AAC3-B0F491DCDA2B}</Project>
       <Name>Carrot.ComposedApplication</Name>

@@ -15,7 +15,8 @@ namespace Carrot.Install
                         new FilePermission("Administrator", GenericPermission.Read | GenericPermission.Execute)),
                     new File(new Id("Carrot.exe.config"), @"..\Carrot\bin\Carrot.exe.config"),
                     new File(new Id("Carrot.ComposedApplication.dll"), @"..\Carrot\bin\Carrot.ComposedApplication.dll"),
-                    new File(new Id("Carrot.Carrot.Contracts.dll"), @"..\Carrot\bin\Carrot.Contracts.dll")),
+                    new File(new Id("Carrot.Carrot.Contracts.dll"), @"..\Carrot\bin\Carrot.Contracts.dll"),
+                    new File(new Id("Carrot.Carrot.Configuration.dll"), @"..\Carrot\bin\Carrot.Configuration.dll")),
                 new Dir(@"%AppData%\Microsoft\Windows\Start Menu\Programs\Startup",
                     new ExeFileShortcut(new Id("autorunShortcut"), "Build Monitor", "[INSTALL_DIR]Carrot.exe", String.Empty)))
             {

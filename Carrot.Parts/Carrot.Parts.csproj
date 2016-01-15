@@ -53,6 +53,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -102,6 +103,10 @@
     <Resource Include="cat.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Carrot.CommandLine\Carrot.Configuration.csproj">
+      <Project>{5C2975A0-4EA1-473D-8DE9-01BFCA036301}</Project>
+      <Name>Carrot.Configuration</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Carrot.Contracts\Carrot.Contracts.csproj">
       <Project>{B16EC54A-A914-4BF7-9821-21FD21545D5A}</Project>
       <Name>Carrot.Contracts</Name>

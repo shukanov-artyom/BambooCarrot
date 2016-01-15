@@ -12,3 +12,7 @@ Carrot.ComposedApplication/bin/
 .vs/Carrot/v14/.suo
 Carrot.Contracts/bin/
 Carrot.Deployment/bin/
+Carrot.CommandLine/obj/
+Carrot.CommandLine/bin/
+Carrot.UnitTests/obj/
+Carrot.BehaviorTests/obj/
