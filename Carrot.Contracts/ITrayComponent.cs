@@ -13,7 +13,7 @@ namespace Carrot.Contracts
         /// <param name="currentStatus">Current CI status.</param>
         void Update(ICiStatus currentStatus);
 
-        event EventHandler MainViewShowHideRequested;
+        event EventHandler SettingsViewRequested;
 
         event EventHandler AppShutdownRequested;
 

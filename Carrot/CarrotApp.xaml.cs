@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Windows;
 using Carrot.ComposedApplication;
-using Carrot.Configuration;
 using Carrot.Contracts;
 using Application = System.Windows.Application;
 
@@ -23,7 +22,7 @@ namespace Carrot
             InitializeComposedApplication(composedApp);
             if (e.Args.Length != 0)
             {
-                UpdateConfiguration(new CarrotCommandLine(e.Args));
+                UpdateConfiguration(new Carrot.Configuration.CarrotCommandLine(e.Args));
                 Shutdown();
             }
         }
@@ -38,9 +37,9 @@ namespace Carrot
             app.Interaction.Setup(app.Exports);
         }
 
-        private void UpdateConfiguration(CarrotCommandLine parameters)
+        private void UpdateConfiguration(Carrot.Configuration.CarrotCommandLine parameters)
         {
-            foreach (KeyValuePair<string, string> pair in CmdLineToConfigKeyMapping.Mapping)
+            foreach (KeyValuePair<string, string> pair in Carrot.Configuration.CmdLineToConfigKeyMapping.Mapping)
             {
                 string cmdParam = pair.Key;
                 string configKey = pair.Value;

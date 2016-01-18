@@ -41,7 +41,7 @@ namespace Carrot.Parts
             logger.Info("Application has started, all Parts activated.");
 
             trayComponent.AppShutdownRequested += ShutdownAction;
-            trayComponent.MainViewShowHideRequested += MainViewShowHide;
+            trayComponent.SettingsViewRequested += SettingsView;
             trayComponent.StatusRefreshRequested += StatusUpdate;
             statusUpdateTimer.Elapsed += StatusUpdate;
             statusUpdateTimer.Start();
@@ -51,7 +51,7 @@ namespace Carrot.Parts
         public void TearDown()
         {
             trayComponent.AppShutdownRequested -= ShutdownAction;
-            trayComponent.MainViewShowHideRequested -= MainViewShowHide;
+            trayComponent.SettingsViewRequested -= SettingsView;
             trayComponent.StatusRefreshRequested -= StatusUpdate;
             statusUpdateTimer.Stop();
         }
@@ -61,7 +61,7 @@ namespace Carrot.Parts
             Application.Current.Shutdown();
         }
 
-        private void MainViewShowHide(object sender, EventArgs eventArgs)
+        private void SettingsView(object sender, EventArgs eventArgs)
         {
             mainView.ShowHide();
         }

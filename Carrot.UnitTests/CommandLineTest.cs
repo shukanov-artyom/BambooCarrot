@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Carrot.Configuration.CmdLineValidationRules;
 using NUnit.Framework;
 
 namespace Carrot.Configuration.Tests
@@ -7,10 +8,14 @@ namespace Carrot.Configuration.Tests
     [TestFixture]
     public class CommandLineTest
     {
+        private const string ValidCommandLine =
+            "-seq http:\\sequrl -bunny http:\\bunyyurl.json -bunnyuser username -bunnypasswd password -updatefolder \\\\updateserver\\updatefolder";
+
         [Test]
         public void ParseValidCommandLineTest()
         {
-            CarrotCommandLine cmd = new CarrotCommandLine(GetValidArgs());
+            CarrotCommandLine cmd = new CarrotCommandLine(Args(
+                "-seq http:\\sequrl -bunny http:\\bunyyurl.json -bunnyuser username -bunnypasswd password -updatefolder \\\\updateserver\\updatefolder"));
             Assert.IsTrue(cmd.ContainsKey(CommandLineArguments.Seq));
             Assert.IsTrue(cmd[CommandLineArguments.Seq].Equals("http:\\sequrl"));
             Assert.IsTrue(cmd.ContainsKey(CommandLineArguments.Bunny));
@@ -23,16 +28,57 @@ namespace Carrot.Configuration.Tests
             Assert.IsTrue(cmd[CommandLineArguments.UpdateFolder].Equals("\\\\updateserver\\updatefolder"));
         }
 
-        private static string[] GetValidArgs()
+        [Test]
+        public void ParseNonexistentCommandLineParameter()
         {
-            string commandLine = "-seq http:\\sequrl -bunny http:\\bunyyurl.json -bunnyuser username -bunnypasswd password -updatefolder \\\\updateserver\\updatefolder";
-            return commandLine.Split().ToArray();
+            try
+            {
+                // changed -seq to -sew
+                CarrotCommandLine cmd = new CarrotCommandLine(Args(
+                    "-sew http:\\sequrl -bunny http:\\bunyyurl.json -bunnyuser username -bunnypasswd password -updatefolder \\\\updateserver\\updatefolder"));
+            }
+            catch (NotSupportedException)
+            {
+                // nothing
+            }
         }
 
-        private static string[] GetInvalidArgs()
+        [Test]
+        public void TestBunnyValidationRule()
         {
-            string commandLine = "";
-            return commandLine.Split().ToArray();
+            var cmdline = new CarrotCommandLine(Args(
+                "-seq http:\\sequrl -bunnyuser username -bunnypasswd password"));
+            var rule = new CommandLineBunnySettingsValidationRule();
+            try
+            {
+                rule.Validate(cmdline);
+            }
+            catch (ArgumentException)
+            {
+                // nothing
+            }
+        }
+
+        [Test]
+        public void CommandLineValidator()
+        {
+            var cmdline = new CarrotCommandLine(Args(
+                "-seq http:\\sequrl -bunnyuser username -bunnypasswd password"));
+            var rule = new CommandLineBunnySettingsValidationRule();
+            try
+            {
+                cmdline.Validate();
+            }
+            catch (ArgumentException)
+            {
+                // nothing
+            }
+            Assert.IsTrue(new CarrotCommandLine(Args(ValidCommandLine)).Validate());
+        }
+
+        private static string[] Args(string line)
+        {
+            return line.Split().ToArray();
         }
     }
 }

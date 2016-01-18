@@ -13,7 +13,7 @@ namespace Carrot.Parts
     [Export(typeof(IExport))]
     public class TrayComponent : MarshalByRefObject, ITrayComponent, IDisposable
     {
-        public event EventHandler MainViewShowHideRequested;
+        public event EventHandler SettingsViewRequested;
 
         public event EventHandler AppShutdownRequested;
 
@@ -65,7 +65,7 @@ namespace Carrot.Parts
 
         private void OnHideShowActivated(Object s, EventArgs e)
         {
-            EventHandler h = MainViewShowHideRequested;
+            EventHandler h = SettingsViewRequested;
             h?.Invoke(s, e);
         }
 

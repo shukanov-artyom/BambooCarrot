@@ -43,6 +43,7 @@
     <Compile Include="AllowedConfigurationKeys.cs" />
     <Compile Include="CarrotCommandLine.cs" />
     <Compile Include="CmdLineToConfigKeyMapping.cs" />
+    <Compile Include="CmdLineValidationRules\CommandLineBunnySettingsValidationRule.cs" />
     <Compile Include="CommandLineArguments.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

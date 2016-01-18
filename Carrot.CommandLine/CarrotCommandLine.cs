@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Carrot.Configuration.CmdLineValidationRules;
 
 namespace Carrot.Configuration
 {
@@ -8,6 +9,11 @@ namespace Carrot.Configuration
     {
         private readonly IDictionary<string, string> values = new Dictionary<string, string>(
             StringComparer.InvariantCultureIgnoreCase);
+
+        private static readonly List<dynamic> Validators = new List<dynamic>()
+        {
+            new CommandLineBunnySettingsValidationRule()
+        };
 
         public CarrotCommandLine(string[] args)
         {
@@ -73,6 +79,16 @@ namespace Carrot.Configuration
             {
                 return values.Keys.ToArray();
             }
+        }
+
+        public bool Validate()
+        {
+            bool result = true;
+            foreach (dynamic validator in Validators)
+            {
+                result = result && validator.Validate(this);
+            }
+            return result;
         }
     }
 }
