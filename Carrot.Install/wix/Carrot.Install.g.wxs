@@ -34,6 +34,10 @@
               <File Id="Carrot.Carrot.Contracts.dll" Source="..\Carrot\bin\Carrot.Contracts.dll" />
             </Component>
 
+            <Component Id="Component.Carrot.Carrot.Configuration.dll" Guid="6f4b779b-ebd4-4e46-8ebe-5be7a75ab890">
+              <File Id="Carrot.Carrot.Configuration.dll" Source="..\Carrot\bin\Carrot.Configuration.dll" />
+            </Component>
+
           </Directory>
         </Directory>
       </Directory>
@@ -111,6 +115,7 @@
       <ComponentRef Id="Component.Carrot.exe.config" />
       <ComponentRef Id="Component.Carrot.ComposedApplication.dll" />
       <ComponentRef Id="Component.Carrot.Carrot.Contracts.dll" />
+      <ComponentRef Id="Component.Carrot.Carrot.Configuration.dll" />
       <ComponentRef Id="autorunShortcut" />
       <ComponentRef Id="AppDataFolder.Microsoft" />
       <ComponentRef Id="AppDataFolder.Microsoft.Windows" />

@@ -29,7 +29,7 @@ namespace Carrot.Configuration
                 if (requiresValue)
                 {
                     ++i;
-                    if (CommandLineArguments.AllArguments.Contains(argName))
+                    if (CommandLineArguments.AllArguments.Contains(args[i]))
                     {
                         throw new ArgumentException(
                             String.Format("Proper value is not specified for argument {0}", argName));

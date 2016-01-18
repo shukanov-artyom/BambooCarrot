@@ -24,9 +24,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carrot.Configuration", "Car
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Quality", "Quality", "{F1D56F1B-4F9E-48B6-B3EE-35BBEC5AD7BB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carrot.UnitTests", "Carrot.UnitTests\Carrot.UnitTests.csproj", "{6AB1F08F-6A77-405B-B2E9-DC536DC0C061}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carrot.Configuration.Tests", "Carrot.UnitTests\Carrot.Configuration.Tests.csproj", "{6AB1F08F-6A77-405B-B2E9-DC536DC0C061}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carrot.BehaviorTests", "Carrot.BehaviorTests\Carrot.BehaviorTests.csproj", "{25DD42A6-9F89-4FF9-A065-B8B558960E59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carrot.AcceptanceTests", "Carrot.BehaviorTests\Carrot.AcceptanceTests.csproj", "{25DD42A6-9F89-4FF9-A065-B8B558960E59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +75,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{C5A7FD33-7438-43F0-A55F-77E1707C9E76} = {41DA0A0F-7451-4FA3-B3F6-6A0DBD556583}
 		{68D93938-1276-4C29-801D-B449FA2F13ED} = {41DA0A0F-7451-4FA3-B3F6-6A0DBD556583}
 		{6AB1F08F-6A77-405B-B2E9-DC536DC0C061} = {F1D56F1B-4F9E-48B6-B3EE-35BBEC5AD7BB}
 		{25DD42A6-9F89-4FF9-A065-B8B558960E59} = {F1D56F1B-4F9E-48B6-B3EE-35BBEC5AD7BB}

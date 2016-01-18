@@ -16,3 +16,5 @@ Carrot.CommandLine/obj/
 Carrot.CommandLine/bin/
 Carrot.UnitTests/obj/
 Carrot.BehaviorTests/obj/
+Carrot.BehaviorTests/bin/
+Carrot.UnitTests/bin/
