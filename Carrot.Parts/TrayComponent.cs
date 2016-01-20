@@ -36,7 +36,7 @@ namespace Carrot.Parts
                     new []
                     {
                         new MenuItem("Update Status", OnUpdateStatusActivated), 
-                        new MenuItem("Hide/Show", OnHideShowActivated),
+                        new MenuItem("Hide/Show Settings", OnHideShowActivated),
                         new MenuItem("Exit", OnAppShutdownActivated)
                     });
             }
