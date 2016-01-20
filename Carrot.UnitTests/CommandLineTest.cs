@@ -60,11 +60,25 @@ namespace Carrot.Configuration.Tests
         }
 
         [Test]
+        public void ValidationRuleTest()
+        {
+            var rule = new CommandLineBunnySettingsValidationRule();
+            try
+            {
+                rule.Validate(new CarrotCommandLine(Args(
+                "-seq http:\\sequrl -bunnyuser username -bunnypasswd password")));
+            }
+            catch (ArgumentException)
+            { 
+                // nothing
+            }
+        }
+
+        [Test]
         public void CommandLineValidator()
         {
             var cmdline = new CarrotCommandLine(Args(
                 "-seq http:\\sequrl -bunnyuser username -bunnypasswd password"));
-            var rule = new CommandLineBunnySettingsValidationRule();
             try
             {
                 cmdline.Validate();
