@@ -75,7 +75,7 @@ namespace Carrot.Configuration.Tests
         }
 
         [Test]
-        public void CommandLineValidator()
+        public void CommandLineValidatorTest()
         {
             var cmdline = new CarrotCommandLine(Args(
                 "-seq http:\\sequrl -bunnyuser username -bunnypasswd password"));
