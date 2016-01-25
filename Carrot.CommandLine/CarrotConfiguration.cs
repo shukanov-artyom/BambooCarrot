@@ -43,6 +43,8 @@ namespace Carrot.Configuration
             UpdateConfigurationKey(AllowedConfigurationKeys.BambooBuildBunnyPassword, BambooBuildBunnyPassword);
             UpdateConfigurationKey(AllowedConfigurationKeys.UseSeqService, UseSeqLogging.ToString());
             UpdateConfigurationKey(AllowedConfigurationKeys.SeqServiceUrl, SeqUrl);
+            UpdateConfigurationKey(AllowedConfigurationKeys.UseUpdateFolder, UseUpdateFolder.ToString());
+            UpdateConfigurationKey(AllowedConfigurationKeys.UpdateFolder, UpdateFolderPath);
         }
 
         private void UpdateConfigurationKey(string key, string newValue)

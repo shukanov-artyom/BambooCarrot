@@ -26,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Quality", "Quality", "{F1D5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carrot.Configuration.Tests", "Carrot.UnitTests\Carrot.Configuration.Tests.csproj", "{6AB1F08F-6A77-405B-B2E9-DC536DC0C061}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carrot.AcceptanceTests", "Carrot.BehaviorTests\Carrot.AcceptanceTests.csproj", "{25DD42A6-9F89-4FF9-A065-B8B558960E59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carrot.BehaviorTests", "Carrot.BehaviorTests\Carrot.BehaviorTests.csproj", "{25DD42A6-9F89-4FF9-A065-B8B558960E59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
