@@ -19,18 +19,6 @@ namespace Carrot.Parts.View
             this.WindowState = WindowState.Minimized;
         }
 
-        public string FailedPlansMessage
-        {
-            get
-            {
-                return textBlockFailedPlan.Text;
-            }
-            set
-            {
-                textBlockFailedPlan.Text = value;
-            }
-        }
-
         /// <summary>
         /// Sets window mode.
         /// </summary>
@@ -38,26 +26,7 @@ namespace Carrot.Parts.View
         {
             this.Dispatcher.Invoke(() =>
                 {
-                    if (currentStatus.Level == CiWarningLevel.Ok)
-                    {
-                        gridMain.Background = new SolidColorBrush(Colors.White);
-                        imageShockedCat.Visibility = Visibility.Collapsed;
-                        imageOk.Visibility = Visibility.Visible;
-                    }
-                    else if (currentStatus.Level == CiWarningLevel.Warn)
-                    {
-                        gridMain.Background = new SolidColorBrush(Colors.Black);
-                        imageShockedCat.Visibility = Visibility.Visible;
-                        imageOk.Visibility = Visibility.Collapsed;
-                    }
-                    else if (currentStatus.Level == CiWarningLevel.Error)
-                    {
-                        gridMain.Background = new SolidColorBrush(Colors.Black);
-                        imageShockedCat.Visibility = Visibility.Visible;
-                        imageOk.Visibility = Visibility.Collapsed;
-                    }
-                    string bottomLine = GetFailedPlansString(currentStatus);
-                    textBlockFailedPlan.Text = bottomLine;
+                    
                 });
         }
 
@@ -89,25 +58,6 @@ namespace Carrot.Parts.View
                     e.Cancel = true;
                     this.Hide();
                 });
-        }
-
-        private static string GetFailedPlansString(ICiStatus state)
-        {
-            string result;
-            if (state.Level == CiWarningLevel.Ok)
-            {
-                result = "All is green.";
-            }
-            else if (state.Offenders.Length == 1)
-            {
-                result = String.Format("Failed plan: {0}", state.Offenders[0]);
-            }
-            else
-            {
-                result = state.Offenders.Aggregate(
-                    (current, off) => String.Format("{0}, {1}", current, off));
-            }
-            return result;
         }
     }
 }

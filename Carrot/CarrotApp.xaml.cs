@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Windows;
 using Carrot.ComposedApplication;
+using Carrot.Configuration;
 using Carrot.Contracts;
 using Application = System.Windows.Application;
 
@@ -22,7 +23,9 @@ namespace Carrot
             InitializeComposedApplication(composedApp);
             if (e.Args.Length != 0)
             {
-                UpdateConfiguration(new Carrot.Configuration.CarrotCommandLine(e.Args));
+                CarrotConfiguration config = CarrotConfiguration.
+                    GetFromCommandLine(new CarrotCommandLine(e.Args));
+                config.Save();
                 Shutdown();
             }
         }
@@ -35,30 +38,6 @@ namespace Carrot
         private void InitializeComposedApplication(IComposedApplication app)
         {
             app.Interaction.Setup(app.Exports);
-        }
-
-        private void UpdateConfiguration(Carrot.Configuration.CarrotCommandLine parameters)
-        {
-            foreach (KeyValuePair<string, string> pair in Carrot.Configuration.CmdLineToConfigKeyMapping.Mapping)
-            {
-                string cmdParam = pair.Key;
-                string configKey = pair.Value;
-                if (!parameters.ContainsKey(cmdParam))
-                {
-                    throw new ArgumentException(
-                        String.Format("Argument {0} not provided, cannot complete configuration.",
-                        cmdParam));
-                }
-                UpdateConfigurationKey(configKey, parameters[cmdParam]);
-            }
-        }
-
-        private void UpdateConfigurationKey(string key, string newValue)
-        {
-            System.Configuration.Configuration config = ConfigurationManager.OpenExeConfiguration(
-                System.Windows.Forms.Application.ExecutablePath);
-            config.AppSettings.Settings[key].Value = newValue;
-            config.Save(ConfigurationSaveMode.Modified);
         }
     }
 }

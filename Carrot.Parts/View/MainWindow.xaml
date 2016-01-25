@@ -5,44 +5,61 @@
     Title="CI Build State" 
     ResizeMode="NoResize"
     IsManipulationEnabled="False"
-    Height="300" 
+    Height="360" 
     Width="400"
     Closing="MainWindow_OnClosing">
-    <Grid 
-        x:Name="gridMain"
-        Background="Black">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <TextBlock
+       
+        <TextBlock 
+            Text="Settings"
             Grid.Row="0"
-            FontSize="18"
-            Foreground="White"
-            Text="Build is broken"
-            HorizontalAlignment="Center"/>
+            FontSize="14"
+            FontWeight="Bold"
+            Margin="15,2,25,10"/>
+        
         <StackPanel
-            HorizontalAlignment="Center"
             Grid.Row="1"
-            Orientation="Horizontal">
-            <Image 
-                Name="imageShockedCat"
-                Visibility="Visible" 
-                Source="/Carrot.Parts;component/cat.jpg" />
-            <Image
-                Name="imageOk"
-                Visibility="Collapsed"
-                Source="/Carrot.Parts;component/freedom.jpg" />
-        </StackPanel>
-        <StackPanel
-            HorizontalAlignment="Center"
-            Grid.Row="2"
-            Orientation="Horizontal">
+            Orientation="Vertical">
             <TextBlock 
-                FontSize="18"
-                Foreground="White"
-                x:Name="textBlockFailedPlan" />
+                Text="Bamboo Build Bunny endpoint URL:"
+                Margin="25,0,0,2"/>
+            <TextBox 
+                Margin="25,0,25,2"/>
+            <TextBlock 
+                Text="Endpoint Login:"
+                Margin="25,0,0,2"/>
+            <TextBox 
+                Margin="25,0,25,2"/>
+            <TextBlock 
+                Text="Endpoint Password:"
+                Margin="25,0,0,2"/>
+            <TextBox 
+                Margin="25,0,25,2"/>
+            <Separator 
+                Margin="10,5,10,5"/>
+            <CheckBox 
+                Content="Use Seq logging"
+                Margin="25,2,2,2"/>
+            <TextBlock 
+                Text="Seq service URL:"
+                Margin="25,2,2,2"/>
+            <TextBox 
+                Margin="25,2,25,2"/>
+            <Separator 
+                Margin="10,5,10,5"/>
+            <CheckBox 
+                Content="Use Update Folder"
+                Margin="25,2,2,2"/>
+            <TextBlock 
+                Text="Update folder:"
+                Margin="25,2,2,2"/>
+            <TextBox 
+                Margin="25,2,25,2"/>
         </StackPanel>
     </Grid>
 </Window>
