@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net.Configuration;
 
 namespace Carrot.Deployment
 {
@@ -35,6 +34,70 @@ namespace Carrot.Deployment
             {
                 model.SeqUrl = value;
                 OnPropertyChanged("SeqUrl");
+            }
+        }
+
+        public bool UseUpdateFolder
+        {
+            get
+            {
+                return model.UseUpdateFolder;
+            }
+            set
+            {
+                OnPropertyChanged("UseUpdateFolder");
+                model.UseUpdateFolder = value;
+            }
+        }
+
+        public string UpdateFolderPath {
+            get
+            {
+                return model.UpdateFolderPath;
+            }
+            set
+            {
+                model.UpdateFolderPath = value;
+                OnPropertyChanged("UpdateFolderPath");
+            }
+        }
+
+        public string BunnyUrl
+        {
+            get
+            {
+                return model.BunnyUrl;
+            }
+            set
+            {
+                model.UpdateFolderPath = value;
+                OnPropertyChanged("BunnyUrl");
+            }
+        }
+
+        public string BunnyUsername
+        {
+            get
+            {
+                return model.BunnyUsername;
+            }
+            set
+            {
+                model.BunnyUsername = value;
+                OnPropertyChanged("BunnyUsername");
+            }
+        }
+
+        public string BunnyPassword
+        {
+            get
+            {
+                return model.BunnyPassword;
+            }
+            set
+            {
+                model.BunnyPassword = value;
+                OnPropertyChanged("BunnyPassword");
             }
         }
     }

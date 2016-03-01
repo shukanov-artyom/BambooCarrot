@@ -66,12 +66,14 @@ namespace Carrot.BehaviorTests.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Pass configuration data to command line")]
+        [NUnit.Framework.CategoryAttribute("CRT-1")]
         public virtual void PassConfigurationDataToCommandLine()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pass configuration data to command line", ((string[])(null)));
-#line 3
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Pass configuration data to command line", new string[] {
+                        "CRT-1"});
+#line 10
 this.ScenarioSetup(scenarioInfo);
-#line 4
+#line 11
     testRunner.Given("The following command line is passed to Carrot executable \'kk\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
@@ -80,7 +82,7 @@ this.ScenarioSetup(scenarioInfo);
             table1.AddRow(new string[] {
                         "",
                         ""});
-#line 5
+#line 12
     testRunner.Then("Configuration file must contain the following keys and values", ((string)(null)), table1, "Then ");
 #line hidden
             this.ScenarioCleanup();

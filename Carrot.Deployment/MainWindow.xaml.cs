@@ -11,6 +11,13 @@ namespace Carrot.Deployment
         public MainWindow()
         {
             InitializeComponent();
+            var settings = new DeploymentSettings();
+            DataContext = new DeploymentSettingsViewModel(settings);
+        }
+
+        private void NextButtonClicked(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -4,6 +4,9 @@ using System.Linq.Expressions;
 
 namespace Carrot.Deployment
 {
+    /// <summary>
+    /// ViewModel base class.
+    /// </summary>
     internal class ViewModelBase : INotifyPropertyChanged
     {
         protected void OnPropertyChanged<T>(Expression<Func<T>> expression)
